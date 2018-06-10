@@ -1,10 +1,7 @@
-library(reshape2)
-
-
+library(data.table)
+library(dplyr)
 
 filename <- "getdata.zip"
-
-
 
 ## Download and unzip the dataset:
 
@@ -46,7 +43,7 @@ featuresWanted.names = gsub('-mean', 'Mean', featuresWanted.names)
 
 featuresWanted.names = gsub('-std', 'Std', featuresWanted.names)
 
-featuresWanted.names <- gsub('[-()]', '', featuresWanted.names)
+featuresWanted.names = gsub('-std', 'Std', featuresWanted.names)
 
 
 
@@ -79,7 +76,6 @@ test <- cbind(testSubjects, testActivities, test)
 allData <- rbind(train, test)
 
 colnames(allData) <- c("subject", "activity", featuresWanted.names)
-
 
 
 # turn activities & subjects into factors
